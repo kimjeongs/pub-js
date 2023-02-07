@@ -1,0 +1,146 @@
+
+@import url(../../assets/css/reset.css);
+
+:root {
+    /* color */
+    --beige-color: beige;
+
+    /* fontsize */
+    --font-large: 20px;
+    --font-medium: 16px;
+    --font-small: 12px;
+    --font-micro: 9px;
+}
+
+/* accordion */
+[class*="acco-wrap"], 
+[class*="toggle-wrap"] {
+    margin-top: 20px;
+}
+.acco-wrap  {
+    border: 1px solid #000;
+    background-color: var(--beige-color);
+}
+.acco-wrap > li + li {
+    border-top: 1px solid #000;
+}
+.acco-wrap .btn {           
+    position: relative;
+    display: block;
+    padding: 5px;
+    font-size: var(--font-medium);
+    font-weight: bold;
+    cursor: pointer;
+}
+.acco-wrap .cont {
+    display: none;
+    padding: 15px 5px;
+    font-size: var(--font-small);
+    border-top: 1px solid #000;
+}
+.acco-wrap li.active .cont {
+    display: block;
+}
+.acco-wrap li:last-child .btn,
+.acco-wrap li:last-child .cont {
+    border-bottom: none;
+}
+
+.acco1 .btn:before {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    transform: rotate(-135deg);
+    transition: .3s;
+    content: '';
+}
+.acco1 li.active .btn:before {
+    top: 10px;
+    transform: rotate(45deg);
+}
+
+.acco2 .btn:before {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    width: 14px;
+    height: 2px;
+    background: #000;
+    transition: .3s;
+    content: '';
+}
+.acco2 li.active .btn:before {
+    top: 10px;
+}
+.acco2 .btn:after {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    width: 14px;
+    height: 2px;
+    background: #000;
+    transform: rotate(-90deg);
+    transition: .3s;
+    content: '';
+}
+.acco2 li.active .btn:after {
+    top: 10px;
+    transform: rotate(0deg);
+}
+
+.acco3 .btn:before {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    transform: rotate(-135deg);
+    transition: .3s;
+    content: '';
+}
+.acco3 li.active .btn:before {
+    top: 10px;
+    transform: rotate(45deg);
+    border-color: #aaa;
+}
+
+/* toggle */
+.toggle-wrap {
+    border: 1px solid #000;
+    background-color: var(--beige-color);
+}
+.toggle-wrap .btn {
+    position: relative;
+    display: block;
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.toggle-wrap .btn:before {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: rotate(135deg);
+    transition: .3s;
+    content: '';
+}
+.toggle-wrap.active .btn:before {
+    top: 10px;
+    transform: rotate(-45deg);
+}
+.toggle-wrap .cont {
+    display: none;
+    padding: 5px;
+    border-top: 1px solid #000;
+}

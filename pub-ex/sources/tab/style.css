@@ -1,0 +1,174 @@
+@import url(../../assets/css/reset.css);
+
+[class*="tab-wrap"] {
+    margin-top: 50px;
+}
+
+/* tab1 */
+.tab1 .menu {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.tab1 .menu > li {
+    flex: 1;
+    border: 1px solid #000;
+}
+.tab1 .menu > li+li {
+    margin-left: -1px;
+}
+.tab1 .menu > li > a {
+    display: block;
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+.tab1 .menu > li.active > a {
+    color: blue;
+    pointer-events: none;
+}
+.tab1 .cont > li {
+    display: none;
+    height: 50px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-top: none;
+}
+.tab1 .cont > li.active {
+    display: block;
+}
+
+/* tab2 */
+.tab2 .menu {
+    display: flex;
+    flex-wrap: nowrap; 
+    border: 1px solid #000;
+}
+.tab2 .menu > li {
+    flex: 1;
+}
+.tab2 .menu > li + li {
+    border-left: 1px solid #000;
+}
+.tab2 .menu > li > a {
+    display: block;
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}   
+.tab2 .menu > li.active > a {
+    color: blue;
+    pointer-events: none;
+}
+.tab2 .cont > li {
+    display: none;
+    height: 50px;
+    padding: 5px;
+    background-color: #ddd;
+}
+.tab2 .cont > li.active {
+    display: block;
+}
+
+/* tab3 */
+.tab3 {
+    position: relative;
+}
+.tab3 .menu {
+    display: flex;
+    flex-wrap: nowrap; 
+}
+.tab3 .menu > li {
+    flex: 1;
+}
+.tab3 .menu > li > a {
+    display: block;
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}   
+.tab3 .menu > li.active > a {
+    color: blue;
+    pointer-events: none;
+}
+.tab3 .cont > li {
+    display: none;
+    height: 50px;
+    padding: 5px;
+    background-color: #ddd;
+}
+.tab3 .cont > li.active {
+    display: block;
+}
+.tab3 .line {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    display: block;
+    width: calc(100% / 5);
+    height: 2px;
+    background-color: blue;
+    transition: .3s;
+}
+
+/* tab4 */
+.tab4 .menu-outer {
+    overflow: auto;
+    white-space: nowrap;
+}
+.tab4 .menu {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.tab4 .menu::-webkit-scrollbar {
+    display: none;
+}
+.tab4 .menu > li {
+    position: relative;
+    display: inline-block;
+}
+.tab4 .menu > li > a {
+    display: block;
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}   
+.tab4 .menu > li.active > a {
+    color: blue;
+    pointer-events: none;
+}
+.tab4 .cont > li {
+    display: none;
+    height: 50px;
+    padding: 5px;
+    background-color: #ddd;
+}
+.tab4 .cont > li.active {
+    display: block;
+}
+.tab4 .line {
+    position: absolute;
+    left: 0;
+    top: 26px;
+    display: block;
+    width: calc(100% / 5);
+    height: 2px;
+    background-color: blue;
+    transition: .3s;
+}
+
+
+
+
+

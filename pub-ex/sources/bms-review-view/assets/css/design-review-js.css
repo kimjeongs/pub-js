@@ -1,0 +1,397 @@
+.no-bc,
+.no-bc .bms-content .cont-outer {
+    padding: 0;
+}
+.design-review-view {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.design-review-view .review-info {
+    width: 33.333vw;
+    max-width: 640px;
+    padding: 80px;
+    background-color: #F6F3F2;
+}
+.design-review-view .review-info > .brand {
+    display: block;
+    margin-bottom: 16px;
+    color: #777;
+    font-size: 18px;
+    line-height: 23px;
+}
+.design-review-view .review-info .progress {
+    margin-top: 24px;
+    color: #002C5F;
+    font-size: 18px;
+    line-height: 30px;
+}
+.design-review-view .review-info .progress > span {
+    display: inline-block;
+    margin-right: 4px;
+    color: #333;
+    font-size: 18px;
+    line-height: 30px;
+}
+.design-review-view .review-info .info-list {
+    margin-top: 56px;
+}
+.design-review-view .review-info .info-list > li + li {
+    margin-top: 40px;
+}
+.design-review-view .review-info .info-list > li  {
+    color: #777;
+    font-size: 16px;
+    line-height: 24px;
+}
+.design-review-view .review-info .info-list > li > strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+}
+.design-review-view .timeline {
+    width: 66.6666vw;
+    max-width: 1280px;
+    padding: 80px 80px 0;
+}
+.design-review-view .timeline .list {
+    padding: 60px 0;
+    border-bottom: 1px solid #e9e9e9;
+}
+.design-review-view .timeline .list:first-child {
+    padding-top: 0;
+}
+.design-review-view .timeline .list .top {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.design-review-view .timeline .list .top .name-cont {
+    position: relative;
+}
+.design-review-view .timeline .list .top .name-cont .name {
+    color: #002c5f;
+    font-size: 24px;
+    line-height: 29px;
+}
+.design-review-view .timeline .list .top .name-cont > .name:hover {
+    color: #00AAD2;
+    text-decoration: underline;
+}
+.design-review-view .timeline .list .top .name-cont > .name:hover + .tooltip {
+    display: block;
+}
+.design-review-view .timeline .list .top .name-cont .tooltip {
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 360px;
+    height: 174px;
+    padding: 32px 40px;
+    margin-left: 16px;
+    background: #353535;
+    z-index: 100;
+}
+.design-review-view .timeline .list .top .name-cont .tooltip em {
+    display: block;
+    margin-bottom: 16px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+}
+.design-review-view .timeline .list .top .name-cont .tooltip span {
+    display: block;
+    color: #e9e9e9;
+    font-size: 16px;
+    line-height: 24px;
+}
+.design-review-view .timeline .list .top .name-cont .tooltip span + span {
+    margin-top: 8px;
+}
+.design-review-view .timeline .list .top .date {
+    color: #999;
+    font-size: 14px;
+    line-height: 21px;
+} 
+.design-review-view .timeline .list .top .state {
+    display: block;
+    height: 28px;
+    padding: 0 10px;
+    background-color: #777;
+    color: #fafafa;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    line-height: 28px;
+}
+.design-review-view .timeline .list .txt-cont {
+    position: relative;
+    margin-top: 43px;
+}
+.design-review-view .timeline .list .txt-cont .txt {
+    height: auto;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+}
+.design-review-view .timeline .list .txt-cont .btn-more {
+    position: relative;
+    margin-top: 24px;
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.design-review-view .timeline .list .txt-cont .btn-more:before {
+    position: absolute;
+    top: 5px;
+    right: -14px;
+    width: 13px;
+    height: 13px;
+    background: url('../images/common/ico_slt_box_off.svg') no-repeat;
+    background-size: contain;
+    transform: rotate(180deg);
+    content: '';
+}
+.design-review-view .timeline .list .txt-cont.short .btn-more:before {
+    transform: rotate(0deg);
+}
+.design-review-view .timeline .file-cont {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-top: 56px;
+}
+.design-review-view .timeline .file-cont > li {
+    width: 10.9895vw;
+    max-width: 211px;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+.design-review-view .timeline .file-cont > li+li {
+    margin-left: 0.8333vw;
+}
+.design-review-view .timeline .file-cont .img {
+    position: relative;
+    width: 100%;
+    max-height: 140px;
+    height: 7.291666vw;
+    overflow: hidden;
+}
+.design-review-view .timeline .file-cont .img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+.design-review-view .timeline .file-cont .no-img {
+    background: #e9e9e9 url('../../assets/images/designreview/ico_rev_view_noimg.svg') no-repeat center;
+    background-size: 1.71875vw 1.40625vw;
+}
+.design-review-view .timeline .file-cont .btn-icon {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-right: 20px;
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    word-wrap:normal;
+    overflow:hidden;
+}
+.design-review-view .timeline .file-cont .btn-icon:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    content: '';
+}
+.design-review-view .timeline .file-cont .size {
+    display: block;
+    margin-top: 6px;
+    color: #999;
+    font-size: 14px;
+    line-height: 20px;
+}
+.design-review-view .timeline .dividing {
+    width: 160px;
+    height: 30px;
+    margin: -15px auto 0;
+    background-color: #fff;
+    color: #002c5f;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+}
+.design-review-view .timeline > .cta-outer {
+    margin-top: 60px;
+}
+.design-review-view .timeline .comment-box {
+    position: sticky;
+    right: 0;
+    bottom: 0;
+    margin: 168px -80px 0;
+    border-top: 1px solid #e9e9e9;
+}
+.design-review-view .timeline .comment-box .btn-comment {
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+    width: 240px;
+    height: 50px;
+    padding: 0 20px 0 30px;
+    background-color: #353535;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: left;
+}
+.design-review-view .timeline .comment-box .btn-comment:after {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    width: 15px;
+    height: 8px;
+    background: url('../images/common/ico_go_top.svg') no-repeat center center;
+    line-height: 50px;
+    content: '';
+}
+.design-review-view .timeline .comment-box .cont {
+    position: relative;
+    display: none;
+    padding: 40px 80px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.design-review-view .timeline .comment-box .cont .tit {
+    color: #000;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+}
+.design-review-view .timeline .comment-box .cont .txt-cont {
+    margin-top: 24px;
+    border: 1px solid #e9e9e9;
+}
+.design-review-view .timeline .comment-box .cont .txt-cont .txtarea {
+    padding: 16px;
+}
+.design-review-view .timeline .comment-box .cont .txt-cont .add-file {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 8px 16px;
+    border-top: 1px solid #e9e9e9;
+} 
+.design-review-view .timeline .comment-box .cont .txt-cont .add-file > * {
+    display: inline-block;
+}
+.design-review-view .timeline .comment-box .cont .txt-cont .add-file label {
+    margin-right: 24px;
+    color: #777;
+    font-size: 16px;
+    line-height: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.design-review-view .timeline .comment-box .cont .txt-cont .add-file input[type="file"]{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);border:0; 
+}
+.design-review-view .timeline .comment-box .cont .txt-cont .add-file .switch-item-list {
+    padding: 0;
+    margin: 0;
+}
+.design-review-view .timeline .comment-box .cont .txt-cont .add-file .switch-item-list li {
+    padding: 4px 4px 4px 14px;
+}
+.design-review-view .timeline .comment-box .cont .cta-outer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    text-align: left;
+}
+.design-review-view .timeline .comment-box .cont .btn-close {
+    position: absolute;
+    top: 35px;
+    right: 68px;
+    width: 42px;
+    height: 42px;
+    background: url('../../assets/images/common/ico_close2.svg') no-repeat;
+    background-size: cover;
+    text-indent: -9999px;
+}
+
+@media screen and (max-width: 1279px) {
+    .no-bc .bms-content {
+        padding: 0;
+    }
+    .design-review-view {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .design-review-view .review-info {
+        width: 100%;
+        max-width: 100%;
+    }
+    .design-review-view .review-info .h3-title br{
+        display: none;
+    }
+    .design-review-view .review-info .info-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .design-review-view .review-info .info-list > li  {
+        width: 50%;
+    }
+    .design-review-view .review-info .info-list > li:nth-child(2){
+        margin-top: 0;
+    }
+    .design-review-view .review-info .info-list > li:last-child {
+        width: 100%;
+    }
+    .design-review-view .timeline {
+        width: 100%;
+        max-width: 100%;
+    }
+    .design-review-view .timeline .file-cont > li {
+        width: 16.484375vw;
+    }
+    .design-review-view .timeline .file-cont > li+li {
+        margin-left: 1.25vw
+    }
+    .design-review-view .timeline .file-cont .img {
+        height:  10.9375vw;
+    }
+}
+
