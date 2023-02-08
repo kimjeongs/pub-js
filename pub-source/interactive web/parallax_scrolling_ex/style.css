@@ -1,0 +1,25 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.parallax-wrap {
+	height: 300vh;
+}
+.parallax-wrap > section {
+	position: fixed;
+	left: 0;
+	width: 100%;
+}
+img {
+	width: 100%;
+	vertical-align: top;
+}
+.section01 {
+	top:0;
+}
+.section02 {
+	top:500px;
+}
+.section03 {
+	top:1000px;
+}
