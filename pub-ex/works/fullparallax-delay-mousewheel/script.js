@@ -4,6 +4,7 @@ $(function() {
   let boxTopArr;
   const btn = $('.btn li');
   const dist = 0.8;
+  const currentBox = 0;
 
   //resize
   $(window).on('resize',function() {
@@ -48,7 +49,16 @@ $(function() {
 
   //마우스 휠
   $(window).on('wheel',function(e){
-    console.log(e)
+    
+    if(e.originalEvent.wheelDeltaY <  120) {
+
+      // move(i+1);
+      // console.log('아래')
+    } else {
+
+      // move(i-1);
+      // console.log('위')
+    }
   })
 
 
@@ -66,6 +76,10 @@ $(function() {
     $('html,body').stop().animate( {
       'scrollTop' : boxTopArr[i]
     })
+
+    currentBox = i;
   }
+
+
 
 })
