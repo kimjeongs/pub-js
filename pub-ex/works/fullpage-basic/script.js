@@ -39,33 +39,6 @@ $(function () {
     }
   });
 
-  //마우스 휠
-  box.on("mousewheel",function(e){
-    e.stopPropagation();
-
-    console.log('ddd')
-    let isBlock = true;
-    if (isBlock) {
-      isBlock = false;
-      if (e.deltaY > 0) { //위 1
-        move(currentBox - 1); 
-      } else if (e.deltaY < 0)  { //아래 -1
-        move(currentBox + 1); 
-      }
-      
-      //currentBox 초기화
-      if (currentBox < 0) {
-        currentBox = 0;
-      } else if (currentBox > boXLen-1) {
-        currentBox = boXLen-1;
-      }
-
-      setTimeout(() => {
-        isBlock = true;
-      }, speed);
-    }
-  })
-
   //버튼 active
   function activeBtn(i) {
     btn.removeClass("active");
