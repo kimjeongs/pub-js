@@ -5,7 +5,7 @@ $(function () {
   const btn = $(".btn li");
   const dist = box.height()*0.2; // 박스의 80퍼센트
   let currentBox = 0;
-  const speed = 1500;
+  const speed = 1000;
 
   //scroll 0
   $(window).on('beforeunload', function(){
@@ -43,26 +43,19 @@ $(function () {
   box.on("mousewheel",function(e){
     e.stopPropagation();
 
-    console.log('ddd')
-    let isBlock = true;
-    if (isBlock) {
-      isBlock = false;
-      if (e.deltaY > 0) { //위 1
-        move(currentBox - 1); 
-      } else if (e.deltaY < 0)  { //아래 -1
-        move(currentBox + 1); 
-      }
-      
-      //currentBox 초기화
-      if (currentBox < 0) {
-        currentBox = 0;
-      } else if (currentBox > boXLen-1) {
-        currentBox = boXLen-1;
-      }
+    if($("html").is(":animated")) return;
 
-      setTimeout(() => {
-        isBlock = true;
-      }, speed);
+    if (e.deltaY > 0) { //위 1
+      move(currentBox - 1); 
+    } else if (e.deltaY < 0)  { //아래 -1
+      move(currentBox + 1); 
+    }
+    
+    //currentBox 초기화
+    if (currentBox < 0) {
+      currentBox = 0;
+    } else if (currentBox > boXLen-1) {
+      currentBox = boXLen-1;
     }
   })
 

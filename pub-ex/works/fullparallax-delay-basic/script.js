@@ -3,21 +3,25 @@ $(function () {
   const boXLen = box.length;
   let boxTopArr;
   const btn = $(".btn li");
-  const dist = box.height()*0.2; // 박스의 80퍼센트
+  let dist; 
   let currentBox = 0;
   const speed = 1500;
 
-  //scroll 0
+  savePos();
+  distance();
+
+ //새로고침
   $(window).on('beforeunload', function(){
-    $(window).scrollTop(0);
+    reload();
   });
 
   //resize
   $(window).on("resize", function () {
-    savePos();
+    reload(); //새로고침
+    savePos(); //좌표값
+    full(); //풀페이지
+    distance(); //여백 계산
   });
-
-  savePos();
 
   //버튼 클릭시
   btn.on("click", function () {
@@ -41,9 +45,10 @@ $(function () {
 
   //마우스 휠
   box.on("mousewheel",function(e){
-    e.stopPropagation();
+    // e.stopPropagation();
 
-    console.log('ddd')
+    if($("html").is(":animated")) return;
+
     let isBlock = true;
     if (isBlock) {
       isBlock = false;
@@ -94,4 +99,21 @@ $(function () {
 
     currentBox = i;
   }
+
+  //풀페이지
+  function full() {
+    let winH = $(window).outerHeight();
+    box.height(winH);
+  }
+
+  //여백 계산
+  function distance() {
+    dist = box.height()*0.2; // 박스의 80퍼센트
+  }
+
+  //scroll top 0
+  function reload() {
+    $(window).scrollTop(0);
+  }
+
 });
