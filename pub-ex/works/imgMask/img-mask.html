@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #8f7a66;
+    }
+
+    .el {
+      width: 100vw;
+      height: 100vh;
+      padding: 1rem;
+
+      /* 배경 */
+      background-image: url(https://images.unsplash.com/photo-1528287942171-fbe365d1d9ac?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&w=1200&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* 마스크 */
+      mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/sun.svg);
+      mask-size: 100vmin;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/sun.svg);
+      -webkit-mask-size: 100vmin;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+
+    /* 이미지 불러오는데 CORS 문제 있음 Cross-Origin Resource Sharing 다른 출처*/
+
+
+    
+  </style>
+</head>
+<body>
+  <div class="el"></div>
+</body>
+</html>

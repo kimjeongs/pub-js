@@ -16,7 +16,7 @@ $(function () {
   $(window).on("resize", function () {
     savePos();
   });
-
+  
   savePos();
 
   //버튼 클릭시
