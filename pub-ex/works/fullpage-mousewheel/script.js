@@ -7,6 +7,8 @@ $(function () {
   let currentBox = 0;
   const speed = 1000;
 
+  savePos();
+
   //scroll 0
   $(window).on('beforeunload', function(){
     $(window).scrollTop(0);
@@ -16,8 +18,6 @@ $(function () {
   $(window).on("resize", function () {
     savePos();
   });
-  
-  savePos();
 
   //버튼 클릭시
   btn.on("click", function () {

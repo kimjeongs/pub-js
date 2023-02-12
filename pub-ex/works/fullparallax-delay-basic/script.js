@@ -3,12 +3,11 @@ $(function () {
   const boXLen = box.length;
   let boxTopArr;
   const btn = $(".btn li");
-  let dist; 
+  const dist = box.height()*0.2; // 박스의 80퍼센트
   let currentBox = 0;
   const speed = 1500;
 
   savePos();
-  distance();
 
  //새로고침
   $(window).on('beforeunload', function(){
@@ -20,7 +19,6 @@ $(function () {
     reload(); //새로고침
     savePos(); //좌표값
     full(); //풀페이지
-    distance(); //여백 계산
   });
 
   //버튼 클릭시
@@ -41,35 +39,17 @@ $(function () {
         activeBtn(i);
       }
     }
-  });
 
-  //마우스 휠
-  box.on("mousewheel",function(e){
-    // e.stopPropagation();
-
-    if($("html").is(":animated")) return;
-
-    let isBlock = true;
-    if (isBlock) {
-      isBlock = false;
-      if (e.deltaY > 0) { //위 1
-        move(currentBox - 1); 
-      } else if (e.deltaY < 0)  { //아래 -1
-        move(currentBox + 1); 
+    box.each(function(i) {
+      let newTop = boxTopArr[i] - scroll;
+      console.log(boxTopArr[i],scroll,newTop)
+      if (scroll > boxTopArr[i]) { //스크롤이 0 이하
+        newTop = newTop * -0.5;
       }
+      $(this).css({top:newTop});
       
-      //currentBox 초기화
-      if (currentBox < 0) {
-        currentBox = 0;
-      } else if (currentBox > boXLen-1) {
-        currentBox = boXLen-1;
-      }
-
-      setTimeout(() => {
-        isBlock = true;
-      }, speed);
-    }
-  })
+    })
+  });
 
   //버튼 active
   function activeBtn(i) {
@@ -95,7 +75,7 @@ $(function () {
   function move(i) {
     $("html,body").stop().animate({
       scrollTop: boxTopArr[i],
-    },speed);
+    });
 
     currentBox = i;
   }
@@ -104,11 +84,6 @@ $(function () {
   function full() {
     let winH = $(window).outerHeight();
     box.height(winH);
-  }
-
-  //여백 계산
-  function distance() {
-    dist = box.height()*0.2; // 박스의 80퍼센트
   }
 
   //scroll top 0

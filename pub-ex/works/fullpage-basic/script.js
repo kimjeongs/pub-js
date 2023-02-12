@@ -4,8 +4,9 @@ $(function () {
   let boxTopArr;
   const btn = $(".btn li");
   const dist = box.height()*0.2; // 박스의 80퍼센트
-  let currentBox = 0;
   const speed = 1500;
+
+  savePos();
 
   //scroll 0
   $(window).on('beforeunload', function(){
@@ -16,8 +17,6 @@ $(function () {
   $(window).on("resize", function () {
     savePos();
   });
-
-  savePos();
 
   //버튼 클릭시
   btn.on("click", function () {
@@ -64,7 +63,5 @@ $(function () {
     $("html,body").stop().animate({
       scrollTop: boxTopArr[i],
     },speed);
-
-    currentBox = i;
   }
 });
