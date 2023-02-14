@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+      }
+
+      body {
+        background-color: #f8f8f8;
+      }
+
+      .main {
+        margin-top: 120px;
+      }
+      .main h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+      }
+      .main .textWrap {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #aaa;
+        padding: 0 50px;
+      }
+      .main .spacer {
+        height: 150px;
+      }
+      .main .text {
+        font-size: 14px;
+        margin-bottom: 10px;
+        line-height: 140%;
+      }
+      .main .icon-back {
+        width: 70%;
+        height: 300px;
+        border: 1px solid #999;
+        background: #fff;
+        margin: 40px auto 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .main .icon {
+        font-size: 45px;
+        color: #dddddd;
+      }
+
+      .trigger {
+        width: auto;
+        height: auto;
+        font-weight: bold;
+        margin-left: 50px;
+        margin-right: 50px;
+        font-size: 20px;
+        background-color: #e0e0e0;
+      }
+
+      .footer {
+        margin-top: 240px;
+        padding: 0 50px;
+        height: 40px;
+        background-color: #222;
+      }
+      .footer a {
+        display: block;
+        line-height: 40px;
+        font-family: monospace;
+        letter-spacing: 1px;
+        text-align: right;
+        color: #fff;
+      }
+
+      .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #fff;
+        border: 1px solid #aaa;
+        padding: 20px;
+        box-shadow: 3px 4px 12px -3px #aaa;
+      }
+      .fixed .active {
+        color: red;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="main">
+        <div class="textWrap">
+          <h2>What a wonderful!</h2>
+          <p class="text">
+            Dolore occaecat cupidatat nostrud voluptate officia anim culpa minim
+            in eiusmod eiusmod in. Esse magna excepteur est eiusmod excepteur
+            laborum amet esse sint sit velit cupidatat excepteur. Aliquip magna
+            dolore quis in tempor ipsum. Ad nostrud cupidatat ut do exercitation
+            nulla ipsum culpa. Dolor laboris sunt voluptate nostrud. Cupidatat
+            non sint est proident pariatur nulla. Aliqua reprehenderit ad do in
+            ut deserunt sit.
+          </p>
+          <p class="text">
+            Amet aliquip incididunt exercitation et consequat sint laborum
+            nulla. Excepteur qui ut cillum eu quis irure elit proident deserunt
+            eiusmod consectetur. Amet occaecat et ex in dolore velit esse
+            occaecat fugiat id et.
+          </p>
+        </div>
+        <div class="iconWrap">
+          <div class="spacer"></div>
+          <div class="spacer"></div>
+          <div class="trigger" id="trigger1">Trigger (1)</div>
+          <div class="icon-back">
+            <p id="animate1" class="icon">♥︎</p>
+          </div>
+          <div class="trigger" id="trigger2">Trigger (2)</div>
+          <div class="icon-back">
+            <p id="animate2" class="icon">★</p>
+          </div>
+          <div class="trigger" id="trigger3">Trigger (3)</div>
+          <div class="icon-back">
+            <p id="animate3" class="icon">✿</p>
+          </div>
+        </div>
+        <div class="footer"><a href="https://nykim.work">nykim.work</a></div>
+        <div class="fixed">
+          <p class="info1">one</p>
+          <p class="info2">two</p>
+          <p class="info3">three</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="ScrollMagic.min.js"></script>
+    <script src="plugins/debug.addIndicators.min.js"></script>
+    <script src="plugins/TweenMax.min.js"></script>
+    <script src="plugins/animation.gsap.min.js"></script>
+    <script>
+      // setClassToggle() , 클래스 토글, 다수 애니메이션 재생
+      //
+      let controller = new ScrollMagic.Controller(); //컨트롤러 생성
+      let tween1 = TweenMax.to("#animate1", 0.3, { //애니메이션 생성
+        color: "#60c5ba",
+        scale: 4,
+        y: 10,
+        rotation: 360
+      });
+      let tween2 = TweenMax.to("#animate2", 0.3, { //애니메이션 생성
+        color: "#ffc952",
+        scale: 4,
+        y: 10,
+        rotation: 360
+      });
+      let tween3 = TweenMax.to("#animate3", 0.3, { //애니메이션 생성
+        color: "#6a60a9",
+        scale: 4,
+        y: 10,
+        rotation: 360
+      });
+
+
+      let scene1 = new ScrollMagic.Scene({ //scene 생성
+        triggerElement: "#trigger1",
+        offset: -50,
+        duration: 400,
+      })
+      .setClassToggle('.info1','active') //('.클래스를 붙일 대상', '붙일 클래스 이름')
+      .setTween(tween1)
+      .addTo(controller)
+      .addIndicators({
+        name: "1",
+      });
+
+      let scene2 = new ScrollMagic.Scene({ //scene 생성
+        triggerElement: "#trigger2",
+        offset: -50,
+      })
+      .setClassToggle('.info2','active')
+      .setTween(tween2)
+      .addTo(controller)
+      .addIndicators({
+        name: "2",
+      });
+
+      let scene3 = new ScrollMagic.Scene({ //scene 생성
+        triggerElement: "#trigger3",
+      })
+      .setClassToggle('.info3','active')
+      .setTween(tween3)
+      .addTo(controller)
+      .addIndicators({
+        name: "3",
+      });
+
+
+    </script>
+  </body>
+</html>

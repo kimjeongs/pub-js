@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+      }
+      body {
+        background-color: #f8f8f8;
+      }
+      .main {
+        margin-top: 120px;
+        padding: 0 50px;
+      }
+      .main h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+      }
+      .main .textWrap {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #aaa;
+      }
+      .main .spacer {
+        height: 150px;
+      }
+      .main .text {
+        font-size: 14px;
+        margin-bottom: 10px;
+        line-height: 140%;
+      }
+      .main .icon {
+        width: 140px;
+        height: 140px;
+        color: #fff;
+        font-size: 40px;
+        line-height: 140px;
+        text-align: center;
+        background-color: #999;
+        border-radius: 100%;
+      }
+
+      .trigger {
+        width: 100%;
+        height: auto;
+        font-weight: bold;
+        font-size: 20px;
+        background-color: #bada77;
+      }
+
+      .footer {
+        margin-top: 240px;
+        padding: 0 50px;
+        height: 40px;
+        background-color: #222;
+      }
+      .footer a {
+        display: block;
+        line-height: 40px;
+        font-family: monospace;
+        letter-spacing: 1px;
+        text-align: right;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="main">
+        <h2>What a wonderful!</h2>
+        <div class="textWrap">
+          <p class="text">
+            Dolore occaecat cupidatat nostrud voluptate officia anim culpa minim
+            in eiusmod eiusmod in. Esse magna excepteur est eiusmod excepteur
+            laborum amet esse sint sit velit cupidatat excepteur. Aliquip magna
+            dolore quis in tempor ipsum. Ad nostrud cupidatat ut do exercitation
+            nulla ipsum culpa. Dolor laboris sunt voluptate nostrud. Cupidatat
+            non sint est proident pariatur nulla. Aliqua reprehenderit ad do in
+            ut deserunt sit.
+          </p>
+          <p class="text">
+            Amet aliquip incididunt exercitation et consequat sint laborum
+            nulla. Excepteur qui ut cillum eu quis irure elit proident deserunt
+            eiusmod consectetur. Amet occaecat et ex in dolore velit esse
+            occaecat fugiat id et.
+          </p>
+        </div>
+        <div class="spacer"></div>
+        <div class="trigger" id="trigger">Trigger!</div>
+        <div class="spacer"></div>
+        <div id="animate1" class="icon">Hello</div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+      </div>
+      <div class="footer"><a href="https://nykim.work">nykim.work</a></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="ScrollMagic.min.js"></script>
+    <script src="plugins/debug.addIndicators.min.js"></script>
+    <script src="plugins/TweenMax.min.js"></script>
+    <script src="plugins/animation.gsap.min.js"></script>
+    <script>
+      //
+      //
+      //animation >> scene >> controller 애니메이션을 만들어 장면에 넣고 스크롤 매직으로 컨트롤
+      //
+      // to() or from()
+      //
+      //let controller = new ScrollMagic.Controller({vertical: false}); 가로 스크롤 {vertical: false}
+      let controller = new ScrollMagic.Controller(); //컨트롤러 생성
+      let tween1 = TweenMax.to('#animate1', 1, { //애니메이션 생성, to('애니메이션 타겟', 지속시간)
+        backgroundColor: "#333",
+        scale: 2,
+        rotation: 360,
+        x: 500
+      })
+      let scene = new ScrollMagic.Scene({ //scene 생성
+        triggerElement: "#trigger", //애니메이션 시작 기준 
+        offset: 150, //start, 애니메이션 진짜 시작, trigger로부터 떨어진 거리, 시작 전 delay 시간 조정
+        duration: '100%', //end, 재생시간, 100%로 지정하면 뷰포트 높이에 따라 유동적으로 end의 위치가 정해짐, 안쓰면 애니메이션 실행 후 바로 끝남
+        reverse: false //한 번만 실행
+      })
+      .setTween(tween1) //애니메이션 추가
+      .addTo(controller)//컨트롤러 추가
+      .addIndicators({ //인디케이터 추가
+        name: "기준" //인디케이터 이름
+      });
+
+    </script>
+  </body>
+</html>

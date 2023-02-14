@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: #f8f8f8;
+      }
+
+      #backContainer {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: 100%;
+        height: 101vh;
+      }
+
+      .back {
+        position: absolute;
+        width: 300%;
+        height: 100%;
+        background-repeat: repeat-x;
+      }
+      .back1 {
+        background: url('http://placeimg.com/640/480/animals') no-repeat;
+        background-size: cover;
+        background-position: 100% 100%;
+      }
+      .back2{
+        background: url('http://placeimg.com/640/480/arch') no-repeat;
+        background-size: cover;
+        background-position: -100% -100%;
+      }
+      .back3 {
+        background: url('http://placeimg.com/640/480/nature') no-repeat;
+        background-size: cover;
+        background-position: 200% 200%;
+      }
+      .back4 {
+        background: url('http://placeimg.com/640/480/tech') no-repeat;
+        background-size: cover;
+        background-position: -200% -200%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="backContainer">
+      <div class="back back1"></div>
+      <div class="back back2"></div>
+      <div class="back back3"></div>
+      <div class="back back4"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="ScrollMagic.min.js"></script>
+    <script src="plugins/debug.addIndicators.min.js"></script>
+    <script src="plugins/TweenMax.min.js"></script>
+    <script src="plugins/animation.gsap.min.js"></script>
+    <script>
+
+      //작업중
+      let controller = new ScrollMagic.Controller();
+      let tween = new TimelineMax().add([
+        TweenMax.to("#backContainer .back1", 1, {
+          backgroundPosition: "-200%",
+          ease: Linear.easeNone,
+        }),
+        TweenMax.to("#backContainer .back2", 1, {
+          backgroundPosition: "-150% 0",
+          ease: Linear.easeNone,
+        }),
+        TweenMax.to("#backContainer .back3", 1, {
+          backgroundPosition: "-50% 0",
+          ease: Linear.easeNone,
+        }),
+        TweenMax.to("#backContainer .back4", 1, {
+          backgroundPosition: "-100% 0",
+          ease: Linear.easeNone,
+        }),
+      ]);
+      let scene1 = new ScrollMagic.Scene({
+        duration: "1000%",
+      })
+        .setTween(tween)
+        .setPin("#backContainer")
+        .addIndicators();
+
+      controller.addScene(scene1);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+      }
+      body {
+        background-color: #f8f8f8;
+      }
+      .main {
+        margin-top: 120px;
+        padding: 0 50px;
+      }
+      .main h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+      }
+      .main .textWrap {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #aaa;
+      }
+      .main .spacer {
+        height: 150px;
+      }
+      .main .text {
+        font-size: 14px;
+        margin-bottom: 10px;
+        line-height: 140%;
+      }
+      .main .icon {
+        width: 140px;
+        height: 140px;
+        color: #fff;
+        font-size: 40px;
+        line-height: 140px;
+        text-align: center;
+        background-color: #999;
+        border-radius: 100%;
+      }
+
+      .trigger {
+        width: 100%;
+        height: auto;
+        font-weight: bold;
+        font-size: 20px;
+        background-color: #bada77;
+      }
+
+      .footer {
+        margin-top: 240px;
+        padding: 0 50px;
+        height: 40px;
+        background-color: #222;
+      }
+      .footer a {
+        display: block;
+        line-height: 40px;
+        font-family: monospace;
+        letter-spacing: 1px;
+        text-align: right;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="main">
+        <h2>What a wonderful!</h2>
+        <div class="textWrap">
+          <p class="text">
+            Dolore occaecat cupidatat nostrud voluptate officia anim culpa minim
+            in eiusmod eiusmod in. Esse magna excepteur est eiusmod excepteur
+            laborum amet esse sint sit velit cupidatat excepteur. Aliquip magna
+            dolore quis in tempor ipsum. Ad nostrud cupidatat ut do exercitation
+            nulla ipsum culpa. Dolor laboris sunt voluptate nostrud. Cupidatat
+            non sint est proident pariatur nulla. Aliqua reprehenderit ad do in
+            ut deserunt sit.
+          </p>
+          <p class="text">
+            Amet aliquip incididunt exercitation et consequat sint laborum
+            nulla. Excepteur qui ut cillum eu quis irure elit proident deserunt
+            eiusmod consectetur. Amet occaecat et ex in dolore velit esse
+            occaecat fugiat id et.
+          </p>
+        </div>
+        <div class="spacer"></div>
+        <div class="trigger" id="trigger">Trigger!</div>
+        <div class="spacer"></div>
+        <div id="animate1" class="icon">Hello</div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+      </div>
+      <div class="footer"><a href="https://nykim.work">nykim.work</a></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="ScrollMagic.min.js"></script>
+    <script src="plugins/debug.addIndicators.min.js"></script>
+    <script src="plugins/TweenMax.min.js"></script>
+    <script src="plugins/animation.gsap.min.js"></script>
+    <script>
+      // fromto() , 애니메이션 반복 재생
+      //
+      let controller = new ScrollMagic.Controller(); //컨트롤러 생성
+      let tween1 = TweenMax.fromTo("#animate1", 0.6, //애니메이션 생성
+      { //from
+        backgroundColor: "#333",
+        scale: 1,
+      }, { //to
+        backgroundColor: "#dc143c",
+        scale: 2,
+        x: 100,
+        rotation: 360,
+        repeat: -1, //무한한 애니메이션 재생
+        yoyo: true //애니메이션의 반복 재생
+      });
+      let scene = new ScrollMagic.Scene({ //scene 생성
+        triggerElement: "#trigger",
+        offset: 150, 
+        duration: 200,
+      })
+        .setTween(tween1) //애니메이션 추가
+        .addTo(controller) //컨트롤러 추가
+        .addIndicators({//인디케이터 추가
+          name: "기준", 
+        });
+    </script>
+  </body>
+</html>
