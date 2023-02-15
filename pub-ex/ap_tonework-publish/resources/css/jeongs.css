@@ -11,115 +11,134 @@
   background-size: cover;
 }
 .ex_container .top-cont .txt {
-  font-size: 10rem;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  font-size: 40rem;
   color: #fff;
+  transform: translate(-50%, -50%);
 }
-.ex_container .sec-wrap {
+.ex_container .section-wrap {
   position: relative;
   padding-top: 100vh;
 }
-.ex_container .cont-inner {
-  padding: 4rem;
-}
-.sec-wrap > section {
+.section-wrap > section {
   position: relative;
+}
+.section-wrap section .pin {
+  position: absolute;
+  top: 0;
+  width: 100%;
   height: 100vh;
 }
-.sec-wrap .sec-tit {
+.section-wrap section .pin.fix {
+  position: fixed;
+  top: 0;
+}
+.section-wrap .tit-cont {
   position: absolute;
 }
-.sec-wrap .sec-tit h2 {
+.section-wrap .tit-cont .cont-tit {
   font-size: 8rem;
 }
-.sec-wrap .sec-tit .tit-txt {
+.section-wrap .tit-cont .tit-txt {
   margin-top: 4rem;
 }
-.sec-wrap .sec-tit .tit-txt > span {
+.section-wrap .tit-cont .tit-txt > span {
   display: block;
   font-size: 3rem;
 }
-.sec-wrap .sec-tit .btn-more {
-  height: 5rem;
+.section-wrap .tit-cont .btn-more {
+  display: inline-block;
   min-width: 10rem;
+  height: 5rem;
   padding: 0 10px;
   margin-top: 3rem;
-  line-height: 0;
+  font-size: 3rem;
+  line-height: 4rem;
+  text-align: center;
   border: 2px solid #000;
   border-radius: 25px;
 }
 
-.sec-wrap .sec01 {
-  position: relative;
-  padding-bottom: 400vh;
+.section-wrap .sec01 {
   background-color:#fff;
 }
-.sec-wrap .sec01 .mov-letter {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+.section-wrap .sec01 .visual-txt {
+  width: 100%;
+  padding-top: 5rem;
   text-align: center;
 }
-.sec-wrap .sec01 .mov-letter li {
+.section-wrap .sec01 .visual-txt span {
+  display: block;
   font-size: 18rem;
   font-weight: 700;
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.sec-wrap .sec01 .mov-letter li:nth-child(1) {
-  transform: translateX(-50rem);
+.section-wrap .sec01 .visual-txt span:nth-child(1) {
+  transform: translateX(20rem);
 }
-.sec-wrap .sec01 .mov-letter li:nth-child(2) {
+.section-wrap .sec01 .visual-txt span:nth-child(2) {
+  transform: translateX(-20rem);
+}
+.section-wrap .sec01 .visual-txt span:nth-child(3) {
   transform: translateX(10rem);
 }
-.sec-wrap .sec01 .mov-letter li:nth-child(3) {
+.section-wrap .sec01 .visual-txt.active span:nth-child(1) {
+  transform: translateX(-50rem);
+}
+.section-wrap .sec01 .visual-txt.active span:nth-child(2) {
+  transform: translateX(0);
+}
+.section-wrap .sec01 .visual-txt.active span:nth-child(3) {
   transform: translateX(50rem);
 }
-.sec-wrap .sec01.pin .mov-letter li {
-  transform: translateX(0) !important;
-}
-.sec-wrap .sec01 .sec-tit {
-  position: absolute;
+
+.section-wrap .sec01 .tit-cont {
   left: 100px;
-  bottom: 100px;
+  bottom: 50px;
 }
-.sec-wrap .sec01 .pin {
+.section-wrap .sec01 .pin {
   background-color:#fff;
 }
-.sec-wrap .sec01 .pin.fix {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-}
-.sec-wrap .sec01 .pics {
-  position: absolute;
+.section-wrap .sec01 .pics {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 100vh 0;
+  padding: 150vh 0 100vh;
 }
-.sec-wrap .sec01 .pics .pic-list {
+.section-wrap .sec01 .pics .pic-list {
   position: relative;
   max-width: 60rem;
   left: 50%;
 }
-.sec-wrap .sec01 .pics .pic-list:nth-child(1) {
+.section-wrap .sec01 .pics .pic-list:nth-child(1) {
   margin-left: -30rem;
 }
-.sec-wrap .sec01 .pics .pic-list:nth-child(2) {
-  margin:20rem 0 0 -10rem;
+.section-wrap .sec01 .pics .pic-list:nth-child(2) {
+  margin: 20rem 0 0 -10rem;
 }
-.sec-wrap .sec01 .pics .pic-list figcaption {
+.section-wrap .sec01 .pics .pic-list figcaption {
   margin-top: 1rem;
   font-size: 2rem;
   text-align: right;
 }
-.sec-wrap .sec01 .pics .pic-list img {
+.section-wrap .sec01 .pics .pic-list img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.sec-wrap .sec02 {
+.section-wrap .sec02:before {
+  position: absolute;
+  top:-100vh;
+  left: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  content: '';
+  clear: both;
+}
+.section-wrap .sec02 {
   background-color: #000;
 }
