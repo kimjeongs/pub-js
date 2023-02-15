@@ -1,0 +1,125 @@
+.ex_container > section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.ex_container .top-cont {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: url('../images/jeongs/img_main_kv.jpg') no-repeat;
+  background-size: cover;
+}
+.ex_container .top-cont .txt {
+  font-size: 10rem;
+  color: #fff;
+}
+.ex_container .sec-wrap {
+  position: relative;
+  padding-top: 100vh;
+}
+.ex_container .cont-inner {
+  padding: 4rem;
+}
+.sec-wrap > section {
+  position: relative;
+  height: 100vh;
+}
+.sec-wrap .sec-tit {
+  position: absolute;
+}
+.sec-wrap .sec-tit h2 {
+  font-size: 8rem;
+}
+.sec-wrap .sec-tit .tit-txt {
+  margin-top: 4rem;
+}
+.sec-wrap .sec-tit .tit-txt > span {
+  display: block;
+  font-size: 3rem;
+}
+.sec-wrap .sec-tit .btn-more {
+  height: 5rem;
+  min-width: 10rem;
+  padding: 0 10px;
+  margin-top: 3rem;
+  line-height: 0;
+  border: 2px solid #000;
+  border-radius: 25px;
+}
+
+.sec-wrap .sec01 {
+  position: relative;
+  padding-bottom: 400vh;
+  background-color:#fff;
+}
+.sec-wrap .sec01 .mov-letter {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.sec-wrap .sec01 .mov-letter li {
+  font-size: 18rem;
+  font-weight: 700;
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.sec-wrap .sec01 .mov-letter li:nth-child(1) {
+  transform: translateX(-50rem);
+}
+.sec-wrap .sec01 .mov-letter li:nth-child(2) {
+  transform: translateX(10rem);
+}
+.sec-wrap .sec01 .mov-letter li:nth-child(3) {
+  transform: translateX(50rem);
+}
+.sec-wrap .sec01.pin .mov-letter li {
+  transform: translateX(0) !important;
+}
+.sec-wrap .sec01 .sec-tit {
+  position: absolute;
+  left: 100px;
+  bottom: 100px;
+}
+.sec-wrap .sec01 .pin {
+  background-color:#fff;
+}
+.sec-wrap .sec01 .pin.fix {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+.sec-wrap .sec01 .pics {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 100vh 0;
+}
+.sec-wrap .sec01 .pics .pic-list {
+  position: relative;
+  max-width: 60rem;
+  left: 50%;
+}
+.sec-wrap .sec01 .pics .pic-list:nth-child(1) {
+  margin-left: -30rem;
+}
+.sec-wrap .sec01 .pics .pic-list:nth-child(2) {
+  margin:20rem 0 0 -10rem;
+}
+.sec-wrap .sec01 .pics .pic-list figcaption {
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-align: right;
+}
+.sec-wrap .sec01 .pics .pic-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sec-wrap .sec02 {
+  background-color: #000;
+}
