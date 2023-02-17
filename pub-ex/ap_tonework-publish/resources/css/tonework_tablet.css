@@ -148,3 +148,11 @@
         grid-column: 8 / span 1 !important;
     }
 }
+@media only screen and (max-width: 1200px) {
+	/* 리뷰 모달 팝업 */
+	.review_modal .review_img{flex: 0 0 640px;}
+}
+@media only screen and (max-width: 1020px) {
+	/* 리뷰 모달 팝업 */
+	.review_modal .review_img{flex: 0 0 50%;}
+}

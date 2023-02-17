@@ -407,8 +407,8 @@ function quickBtn(){
     quick_btn_b = $(document).height() - $(window).height() - fh;
     if(st >= acth){
         colorTargetis.addClass("active");
-        if($("#wrap").hasClass("main")){
-            if(st >= quick_btn_b && $("footer").hasClass("on")){
+        if($("#wrap").hasClass("main") || $("#container").hasClass("brand_story")){
+            if(st >= quick_btn_b && $("footer").hasClass("active")){
                 colorTargetis.css({"position":"absolute", "bottom":fh + 20});
             } else {
                 colorTargetis.removeAttr("style");
@@ -616,6 +616,26 @@ function like(event) { // 좋아요
             }
         });
     }
+}
+
+function countNum() {
+    $('.count_num').each(function() { 
+        let $this = $(this),
+        $this_num = $this.html() - 10,
+        countTo = $this.attr('data-count');
+        $({ countNum: $this_num}).animate({
+            countNum: countTo 
+        },{
+            duration: 1000, 
+            easing:'linear',
+            step: function() {
+                $this.text(numberWithCommas(Math.floor(this.countNum)));
+            },
+            complete: function() {
+                $this.text(numberWithCommas(Math.floor(this.countNum)));
+            }
+        });
+    });
 }
 
 // 카운트 숫자 콤마처리
