@@ -1,48 +1,108 @@
 $(function() {
-  const section = $('.ex-container > section');
+  const section = $('.ex-container .section-wrap > section');
   const sectionLen = section.length; 
   const sectionTopArr = [];
+  const topSection =  section.eq(0);
+  const dist = 300;
+  let winH = $(window).height();
+  let motionItem;
 
   $(window).scroll(function() {
     let scroll = $(this).scrollTop();
-    const motionItem = $('.motion-area .motion-item');
-    
-    for (let i = 0; i < sectionLen; i++) {
-      if (scroll > sectionTopArr[i] && scroll < sectionTopArr[i+1]) {
-        section.eq(i).find('.cont-wrap').removeClass('cont-wrap').addClass('motion-area');
-      }
 
-      //motion 위치 조정
+    for (let i = 0; i < sectionLen; i++) {
+      if (scroll > sectionTopArr[i] - dist && scroll < sectionTopArr[i+1] - dist) {
+        section.eq(i).find('.cont-wrap').removeClass('cont-wrap').addClass('motion-area');
+
+        //section 02 모션이지만 공통 사용 가능
+        if(section.eq(i).find('.visaul-txt-motion').length) {
+          $('.visaul-txt-motion').addClass('active');
+        }
+      } else {
+        //section 02 모션이지만 공통 사용 가능
+        if(section.eq(i).find('.visaul-txt-motion').length) {
+          $('.visaul-txt-motion').removeClass('active');
+        }
+      }
+      let currentIdx = i;
+
+      //fixed
+      pinFix(scroll, currentIdx);
+      
+      //motion
+      motionItem = $('.motion-area .motion-item');
       section.eq(i).find(motionItem).each(function(idx) {
         const item = $(this);
-        setTimeout(function(idx) {
-          item.addClass('ir')
-          //item.attr('data-num', idx);
-        },idx * 300)
+        addIr(item, idx);
       })
+
+      //section 02
+      if (scroll > sectionTopArr[1]) {
+        section.eq(1).find('.pin').removeClass('pin').addClass('pin-fixed').css({
+          top: 0,
+          bottom: 'auto'
+        })
+        if (scroll > sectionTopArr[2] - winH) {
+          console.log('ddd')
+          section.eq(1).find('.pin-fixed').removeClass('pin-fixed').addClass('pin').css({
+            top:'auto',
+            bottom: 0
+          })
+        } 
+      }
+    
+
     }
 
-    //top visual {
-    if(scroll > 0) {
-      section.eq(0).find('.visual-img').css({
-        transform : 'translateZ('+ scroll * 0.3 +'px)'
-      })
+    //top section
+    topSectionLoad(scroll);
 
-      //스크롤 0 되면 fadeOut
-      section.eq(0).find('.visual-txt-wrap').css({
-        opacity:0,
-        transition:1.5+'s'
-      })
-    } 
+    
+    
+    
 
     
     
     
   })
 
+  //window 로드시 바로 실행
+  topSection.find('.cont-wrap').removeClass('cont-wrap').addClass('motion-area');
+  topSection.find('.motion-area .motion-item').each(function(idx) {
+    const item = $(this);
+    addIr(item, idx);
+  })
 
+  //top section
+  function topSectionLoad(scroll) {
+    if(scroll > 0) {
+      //배경 이미지 사이즈
+      topSection.find('.visual-img').css({
+        transform : 'translateZ('+ scroll * 0.3 +'px)'
+      })
 
-  
+      //스크롤 0 되면 fadeOut
+      topSection.find('.visual-txt-wrap').removeClass('hello').addClass('bye')
+    } else {
+      topSection.find('.bye').removeClass('bye').addClass('hello')
+    }
+  }
+
+  //pin 고정
+  function pinFix(scroll , currentIdx) {
+    if (scroll > sectionTopArr[currentIdx] && scroll < sectionTopArr[currentIdx+1]) {
+      section.eq(currentIdx).find('.pin').removeClass('pin').addClass('pin-fixed');      
+    } else {
+      section.eq(currentIdx).find('.pin-fixed').removeClass('pin-fixed').addClass('pin');
+    }
+  }
+
+  //인터랙션 클래스 추가
+  function addIr(item, idx) {
+    setTimeout((idx) => {
+      item.addClass('ir')
+    },idx * 300)
+  }
   
   //section top 값
   sectionTopPos(); 
