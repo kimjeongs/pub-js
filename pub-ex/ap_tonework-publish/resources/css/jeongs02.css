@@ -141,7 +141,7 @@
 }
 .ex-container .section02 .inner {
   min-height: 100vh;
-  padding: 15em 5em;
+  padding: 0 5em;
 }
 .ex-container .section02 .pin {
   position: absolute;
@@ -156,6 +156,9 @@
   left: 0;
   width: 100%;
   background-color: #fff;
+}
+.ex-container .section02 .visual-txt-wrap {
+  padding-top: 100px;
 }
 .ex-container .section02 .visual-txt-wrap .visaul-txt-motion {
   text-align: center;
@@ -195,7 +198,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 150vh 0 100vh;
+    padding: 200vh 0 100vh;
 }
 .ex-container .section02 .popcorn-pics .pic-list {
   display: flex;
@@ -221,6 +224,9 @@
   transform: translateY(0);
   transition-delay: 1s;
 } */
+.ex-container .section02 .popcorn-pics .pic-list figure img {
+  vertical-align: top;
+}
 .ex-container .section02 .popcorn-pics .pic-list figure figcaption {
   text-align: right;
   margin-top: 0.5em;

@@ -35,20 +35,21 @@ $(function() {
         const item = $(this);
         addIr(item, idx);
       })
-
+  
       //section 02
-      if (scroll > sectionTopArr[1]) {
-        section.eq(1).find('.pin').removeClass('pin').addClass('pin-fixed').css({
+      const section02 = section.eq(1);
+      if (scroll > sectionTopArr[1] && scroll < sectionTopArr[2] - winH) {
+        section02.find('.pin').removeClass('pin').addClass('pin-fixed');
+      } else if (scroll > section02.height()) {
+        section02.find('.pin-fixed').removeClass('pin-fixed').addClass('pin').css({
+          top:'auto',
+          bottom: 0
+        })
+      } else {
+        section02.find('.pin-fixed').removeClass('pin-fixed').addClass('pin').css({
           top: 0,
           bottom: 'auto'
         })
-        if (scroll > sectionTopArr[2] - winH) {
-          console.log('ddd')
-          section.eq(1).find('.pin-fixed').removeClass('pin-fixed').addClass('pin').css({
-            top:'auto',
-            bottom: 0
-          })
-        } 
       }
     
 
@@ -64,14 +65,7 @@ $(function() {
     
     
     
-  })
-
-  //window 로드시 바로 실행
-  topSection.find('.cont-wrap').removeClass('cont-wrap').addClass('motion-area');
-  topSection.find('.motion-area .motion-item').each(function(idx) {
-    const item = $(this);
-    addIr(item, idx);
-  })
+  })//window scroll
 
   //top section
   function topSectionLoad(scroll) {
@@ -88,8 +82,16 @@ $(function() {
     }
   }
 
+  //window 로드시 바로 실행
+  topSection.find('.cont-wrap').removeClass('cont-wrap').addClass('motion-area');
+  topSection.find('.motion-area .motion-item').each(function(idx) {
+    const item = $(this);
+    addIr(item, idx);
+  })
+
   //pin 고정
   function pinFix(scroll , currentIdx) {
+    if (currentIdx == 1) return;
     if (scroll > sectionTopArr[currentIdx] && scroll < sectionTopArr[currentIdx+1]) {
       section.eq(currentIdx).find('.pin').removeClass('pin').addClass('pin-fixed');      
     } else {
