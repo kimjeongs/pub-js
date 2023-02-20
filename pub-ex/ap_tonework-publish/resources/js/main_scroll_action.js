@@ -5,14 +5,14 @@ $(document).ready(function () {
     tween = new TimelineMax(),
     tween2 = new TimelineMax(),
     controller,
-    logoSize = w * 72.9 / 100
+    //logoSize = w * 72.9 / 100,
     size = w,
     delay = 500,
     timer = null,
-    skinH = $(".skin_finder").height()/2 + 1000;
+    skinH = $(".main_cnt_02").height()/2;
     
     let logo_controller = new ScrollMagic.Controller();
-    tween.fromTo('.main header .logo', .5, {left:100, top: 120, width:logoSize}, {left:40, top:30, width:240});
+    tween.fromTo('.main header .logo', .5, {left:100, top: 120, width:1024}, {left:40, top:30, width:240});
     new ScrollMagic.Scene({triggerElement: "#trigger1", duration: "50%", triggerHook:0, tweenChanges: true})
         .setTween(tween)
         //.addIndicators() // add indicators (requires plugin)
@@ -31,12 +31,12 @@ $(document).ready(function () {
         //.addIndicators() // add indicators (requires plugin)
         .addTo(controller);
 
-        new ScrollMagic.Scene({triggerElement: "#trigger3", duration: "600%", triggerHook:0, tweenChanges: true})
+        new ScrollMagic.Scene({triggerElement: "#trigger3", duration: "200%", triggerHook:0, tweenChanges: true})
         .setPin(".main_cnt_02")
         //.addIndicators() // add indicators (requires plugin)
         .addTo(controller);
 
-        new ScrollMagic.Scene({triggerElement: "#trigger3", duration: "600%", triggerHook:0, offset:skinH, tweenChanges: true})
+        new ScrollMagic.Scene({triggerElement: "#trigger3", duration: "200%", triggerHook:0, offset:skinH, tweenChanges: true})
         .setClassToggle(".main_cnt_02", "active")
         //.addIndicators() // add indicators (requires plugin)
         .addTo(controller);
@@ -44,32 +44,12 @@ $(document).ready(function () {
         new ScrollMagic.Scene({triggerElement: "#trigger4", triggerHook:1, tweenChanges: true})
         //.addIndicators() // add indicators (requires plugin)
         .setClassToggle(".main_cnt_03", "active")
-        .addTo(controller)
-        /*.on("start end", function () {
-            mainStart_03();
-        });*/
+        .addTo(controller);
 
         new ScrollMagic.Scene({triggerElement: "#trigger5", triggerHook:1, tweenChanges: true})
         //.addIndicators() // add indicators (requires plugin)
         .setClassToggle(".main_cnt_04, .footer", "active")
-        .addTo(controller)
-        /*
-        .on("start end", function () {
-            mainStart_04();
-        });
-        */
-    }
-    function mainStart_04() {
-        setTimeout(function() {
-            $(".main_cnt_04, .footer").toggleClass("on");
-            mainSnsSwiper(); // sns스와이퍼 호출
-        }, 500);
-    }
-
-    function mainStart_03() {
-        setTimeout(function() {
-            $(".main_cnt_03").toggleClass("on");
-        }, 500);
+        .addTo(controller);
     }
     
     /* 초기화

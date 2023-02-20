@@ -1,9 +1,7 @@
 $(document).ready(function () {
     
     const story_01 = $(".brand_about_01"),
-    brand_wrp = $(".brand_about_wrap"),
-    story_03 = $(".brand_about_03"),
-    story_04 = $(".brand_about_04");
+    brand_wrp = $(".brand_about_wrap");    
     story_01.addClass("active");
     
     // 메인 스크롤 액션
@@ -14,25 +12,11 @@ $(document).ready(function () {
         $line01 = $(".brd_ani_line01"),
         $line02 = $(".brd_ani_line02"),
         $line03 = $(".brd_ani_line03"),
-        section02_t,
-        section03_t,
-        section04_t,
         controller;
     
     setTimeout(function() {
         brand_wrp.addClass("active");
         brandScrollMagic();
-        section02_t = $(".brand_about_02 ").offset().top;
-        section03_t = $(".brand_about_03 ").offset().top;
-        section04_t = $(".brand_about_04 ").offset().top;
-        
-        $(window).resize(function(event){
-            section02_t = $(".brand_about_02 ").offset().top;
-            section03_t = $(".brand_about_03 ").offset().top;
-            section04_t = $(".brand_about_04 ").offset().top;
-            console.log(section03_t, section04_t);
-        });
-
     }, 4400);
         
 
@@ -71,9 +55,6 @@ $(document).ready(function () {
         .setTween(tween)
         .setClassToggle('.brand_about_01', 'fade')
         //.addIndicators() // add indicators (requires plugin)
-        .on("enter", function () {
-            section02_move();
-        })
         .addTo(controller);
 
         new ScrollMagic.Scene({triggerElement: ".step_01",triggerHook:1, offset:90, tweenChanges: true})
@@ -113,41 +94,17 @@ $(document).ready(function () {
 
         new ScrollMagic.Scene({triggerElement: "#trigger_02", triggerHook:1, tweenChanges: true})
         .setClassToggle('.brand_about_03', 'active')
-        .addIndicators() // add indicators (requires plugin)
-        .on("enter", function () {
-            section03_move();
-        })
+        //.addIndicators() // add indicators (requires plugin)
         .addTo(controller);
 
         new ScrollMagic.Scene({triggerElement: "#trigger_03", triggerHook:1, tweenChanges: true})
         .setClassToggle('.brand_about_04', 'active')
-        .addIndicators() // add indicators (requires plugin)
+        //.addIndicators() // add indicators (requires plugin)
         .on("enter", function () {
-            section04_move();
+            $("footer").addClass("active");
+            countNum();
         })
         .addTo(controller);
-        
-        /*
-        new ScrollMagic.Scene({triggerElement: "#trigger2", duration: "50%", tweenChanges: true})
-        .setTween(tween2)
-        .addIndicators() // add indicators (requires plugin)
-        .addTo(controller);
-        */
-        // build scene
-    }
-
-    function section02_move(){
-        window.scrollTo({top: section02_t});
-    }
-
-    function section03_move(){
-        window.scrollTo({top: section03_t});
-    }
-
-    function section04_move(){
-        window.scrollTo({top: section04_t});
-        countNum();
-        $("footer").addClass("active");
     }
 
 });

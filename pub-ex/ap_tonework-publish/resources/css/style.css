@@ -755,6 +755,8 @@ caption { font-size: 1.4rem; line-height: 1.6 }
 
 .ico_over_menu::before { background-image: url("../images/icon/ico_over_menu.svg"); }
 
+.ico_insta::before { background-image: url("../images/icon/ico_insta_b.svg"); }
+
 /* Button */
 button { vertical-align: middle; border: 0; background: none; white-space: nowrap; outline: none; cursor: pointer; }
 
