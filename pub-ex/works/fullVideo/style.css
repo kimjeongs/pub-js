@@ -1,18 +1,66 @@
 .top-wrap {
+  position: relative;
   width: 100%;
   height: 100vh;
 }
-.full-video {
+.top-wrap .full-video {
   /* aspect-ratio: 16 / 9;  비율 설정, ie 안됨 */
   width: 100%;
   height: 100vh;
 }
-.full-video img, 
-.full-video video {
+.top-wrap .full-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.top-wrap .top-txt-box  {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+.top-wrap .top-txt-box .first-txt {
+  position: absolute;
+  left: 0;
+  bottom: 100px;
+  width: 100%;
+  text-align: center;
+}
+.top-wrap .top-txt-box .first-txt .txt-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.top-wrap .top-txt-box .first-txt em,
+.top-wrap .top-txt-box .first-txt p {
+  display: block;
+  overflow: hidden;
+}
+.top-wrap .top-txt-box .first-txt .motion-txt {
+  display: block;
+  color: #fff;
+  font-size: 5rem;
+  line-height: 1;
+  /* opacity:0; */
+  transform: translateY(100%);
+  transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  
+}
+.top-wrap .top-txt-box .first-txt .last-txt {
+  margin-top: 30px;
+}
+.top-wrap .top-txt-box .first-txt .last-txt .motion-txt {
+  font-size: 2rem;
+}
+
+
+.top-wrap .top-txt-box .motion-wrap .motion-txt.ir {
+  transform: translateY(0);
+  opacity:1;
+}
+
 
 section {
   height: 100vh;
