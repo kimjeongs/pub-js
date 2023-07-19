@@ -1,0 +1,24 @@
+body{margin:0;}
+
+/* lib selector */
+.numberpicker {position:relative;width:100%;}
+.numberpicker #selectNumber {width:100%;}
+.numberpicker #datepicker {position:absolute;top:0;left:0;right: 0;bottom:0;opacity: 0;}
+.numberpicker-div.ui-widget.ui-widget-content {height:294px;padding:0;margin-top:4px;border:1px solid #1C1C1B;border-radius:4px;}
+.numberpicker-div.ui-datepicker .ui-datepicker-header {min-height:62px;padding:0;border:none;background:#fff;border-bottom:1px solid #DBDBDB;box-sizing:border-box;}
+.numberpicker-div .ui-datepicker-title {margin:0;line-height:1;}
+.numberpicker-div .ui-datepicker-title .ui-datepicker-month {color:#1C1C1B;font-family:"sans-serif";font-size:20px;font-weight:600;line-height:64px;}
+.numberpicker-div .ui-datepicker-title .ui-datepicker-month::after {display:inline-block;color:#1C1C1B;font-size:16px;font-weight:600; content:'월'}
+.en .numberpicker-div .ui-datepicker-title .ui-datepicker-month::after { content:'M'}
+.numberpicker-div .ui-datepicker-title .ui-datepicker-year {display:none;}
+.numberpicker-div .ui-datepicker-prev,
+.numberpicker-div .ui-datepicker-next { top:50%;width:30px;height:30px;border-radius: 50%;border:1px solid #76777A;background: #fff url('/resources/images/icon/ico_16_arrow_left.svg') no-repeat center;background-size: 16px;transform:translateY(-50%);}
+.numberpicker-div .ui-datepicker-prev {left:100px;}
+.numberpicker-div .ui-datepicker-next {right:100px;background: #fff url('/resources/images/icon/ico_16_arrow_right.svg') no-repeat center;background-size: 16px;}
+.numberpicker-div .ui-datepicker-calendar thead {display:none;}
+.numberpicker-div .ui-datepicker-calendar {margin:0;}
+.numberpicker-div .ui-state-default {width:40px;height:40px;padding:0;background:#fff;text-align:center;color:#1C1C1B;font-family:"sans-serif";font-size:14px;font-weight:500;line-height: 40px;border-radius:50%;border:none;transition:.1s;}
+.numberpicker-div .ui-state-default.ui-state-hover {background:#1C1C1B;color:#fff;}
+.numberpicker-div.ui-datepicker {width:auto;}
+.numberpicker-div.ui-datepicker td {padding:0 2px;}
+.numberpicker-div tbody {border: 13px solid transparent;}

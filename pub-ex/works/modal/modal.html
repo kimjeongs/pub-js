@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="modal.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="contents">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aperiam, quaerat ratione cumque nam veniam libero, quia placeat dolor accusantium facilis quisquam modi repudiandae a non quis deleniti molestiae magnam.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aperiam, quaerat ratione cumque nam veniam libero, quia placeat dolor accusantium facilis quisquam modi repudiandae a non quis deleniti molestiae magnam.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aperiam, quaerat ratione cumque nam veniam libero, quia placeat dolor accusantium facilis quisquam modi repudiandae a non quis deleniti molestiae magnam.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aperiam, quaerat ratione cumque nam veniam libero, quia placeat dolor accusantium facilis quisquam modi repudiandae a non quis deleniti molestiae magnam.</p>
+    <div class="dummy">
+      <button type="button" class="window-open" data-modal-trigger>
+        창 열기
+      </button>
+    </div>
+  </div>
+  
+  <div class="modal" data-modal-main>
+    <section class="window">
+      <header class="window-header">
+        <h1>Lorem ipsum dolor sit amet consectetur</h1> 
+        <button class="window-close" type="button" data-modal-close><i class="blind">창 닫기</i></button>
+      </header>
+      <div class="window-contents">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aperiam, quaerat ratione cumque nam veniam libero, quia placeat dolor accusantium facilis quisquam modi repudiandae a non quis deleniti molestiae magnam.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aperiam, quaerat ratione cumque nam veniam libero, quia placeat dolor accusantium facilis quisquam modi repudiandae a non quis deleniti molestiae magnam.</p>
+      </div>
+      <footer class="window-footer">
+        footer
+      </footer>
+    </section>
+  </div>
+
+
+  <script src="../../assets/js/lib/jquery-3.6.0.min.js"></script>
+  <script>
+    const EID = {
+      IS_ACTIVE : "is_active",
+      IS_LOCKED : "is_locked"
+    }
+    const root = $('body');
+    const modalMain = $('[data-modal-main]');
+    const modalTrigger = $('[data-modal-trigger]');
+    const modalClose = $('[data-modal-close]');
+
+    const openModal = () => {
+      modalMain.addClass(EID.IS_ACTIVE);
+      root.addClass(EID.IS_LOCKED);
+    }
+    const closeModal = () => {
+      modalMain.removeClass(EID.IS_ACTIVE);
+      root.removeClass(EID.IS_LOCKED);
+    }
+
+    modalTrigger.on('click', () => {
+      openModal();
+    });
+    modalClose.on('click', () => {
+      closeModal();
+    })
+
+    modalMain.on('click', (e) =>{
+      if (e.target.hasAttribute('data-modal-main')) {
+        closeModal();
+      }
+    })
+
+    $(document).keydown(function(e){
+      if (e.keyCode == 27) closeModal();
+    })
+    
+  </script>
+</body>
+</html>

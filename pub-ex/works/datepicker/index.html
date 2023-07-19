@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/jquery-ui.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <div class="numberpicker">
+    <input type="text" id="selectNumber">
+    <input type="text" id="datepicker">
+  </div>
+
+  
+  <script src="../../assets/js/lib/jquery-3.6.0.min.js"></script>
+  <script src="assets/jquery-ui.min.js"></script>
+
+  <script>
+    $(function(){
+      $.datepicker._updateDatepicker_original = $.datepicker._updateDatepicker;
+      $.datepicker._updateDatepicker = function(inst) {
+        $.datepicker._updateDatepicker_original(inst);
+        var afterShow = this._get(inst, 'afterShow');
+        if (afterShow)
+          afterShow.apply((inst.input ? inst.input[0] : null));  // trigger custom callback
+      }
+
+      $('#datepicker').datepicker({
+        dateFormat: '#mmdd',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+        monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+        // monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        // monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        // yearSuffix: '년',
+
+        // buttonImage:/application/db/jquery/images/calendar.gif,
+        // numberOfMonths: [2,3],
+
+        // minDate: new Date(2023, 1 - 1, 1),
+        // maxDate: "+12m +1w",
+        // firstDay: 0,
+        // yearRange: "2023:2023",
+        defaultDate:new Date(2023, 0, 1),
+        
+        todayHighlight:false,
+
+        showWeek: false,
+        // showOtherMonths: true,
+        selectOtherMonths: true,
+        // showMonthAfterYear: false,
+        
+
+        // numberOfMonths: 12,
+        // showButtonPanel: true
+
+
+        // beforeShowDay:,
+
+        // beforeShow: function(inst) {
+
+        // },
+
+        afterShow : function(inst) {
+          let other = $('.ui-datepicker-other-month');
+          let firstTr = $('.ui-datepicker-calendar tbody').find('tr:first-child');
+          let lastTr = $('.ui-datepicker-calendar tbody').find('tr:last-child');
+          let firstOther = firstTr.find(other);
+          let firstOtherLen = firstOther.length;
+          let firstLineEnd = firstTr.find('.ui-datepicker-week-end a');
+          let firstLineEndIdx = firstLineEnd.data('date');
+
+          $('.numberpicker').siblings('#ui-datepicker-div').addClass('numberpicker-div');
+          
+          other.remove();
+
+          if(firstOtherLen !== 0) {
+            for(let i = 0; i < firstOtherLen; i++){
+              let html = `<td class=" " data-handler="selectDay" data-event="click" data-month="" data-year=""><a class="ui-state-default" href="#" aria-current="false" data-date="0">0</a></td>`;
+
+              firstTr.prepend(html);
+            }
+          }
+
+          $('.ui-datepicker-calendar td').each(function(i) {
+            $(this).find('a').text(i+1);
+            $(this).find('a').attr('data-date', i+1);
+          })
+
+          for(let i = 0; i < firstOtherLen; i++){            
+            $('.ui-datepicker-calendar td').last().remove();
+          }
+
+          let targetMonth = $('#ui-datepicker-div').find('.ui-datepicker-month').text();
+          if(targetMonth == 2 && lastTr.find('td').text() > 28) {
+            lastTr.find('td').last().remove();
+          }
+          
+          $('#datepicker').focus(function() {
+            $('#ui-datepicker-div').show();
+          })
+
+          $('.ui-datepicker-calendar td a').click(function() {
+            let month  = $(this).parents('#ui-datepicker-div').find('.ui-datepicker-month').text();
+            let day  = $(this).data("date");
+            let target = $(this).parent('td').index();
+            
+            if (month < 10) month = '0' + month;
+            if (day < 10) day = '0' + day;         
+            $('#selectNumber').val('#'+ month + day);
+
+            if ($(this).is(firstLineEnd)){
+              $('#selectNumber').val('#'+ month + '07');
+            } 
+
+            if(target < firstOtherLen ) {
+              $('#ui-datepicker-div').hide();           
+            }    
+          })
+
+          $(window).resize(function() {
+            $('#ui-datepicker-div').hide(); 
+          });
+        },
+      });
+    })
+  </script>
+
+</body>
+</html>

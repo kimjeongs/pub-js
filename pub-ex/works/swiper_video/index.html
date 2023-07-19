@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <div class="swiper-container" style="border: 1px solid red; height: 400px;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <video>
+            <source
+              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+            />
+          </video>
+        </div>
+
+        <div class="swiper-slide">
+          <video>
+            <source
+              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            />
+          </video>
+        </div>
+
+        <div class="swiper-slide">
+          <video>
+            <source
+              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+            />
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        init: false,
+        initialSlide: 0,
+        loop: true
+      });
+      var control = function () {
+        var slide = swiper.slides[swiper.activeIndex];
+        var video = slide.children[0];
+        video.addEventListener("ended", function () {
+          swiper.slideNext(false);
+        });
+        video.play();
+      };
+      swiper.on("init", control);
+      swiper.on("slideChange", control);
+      swiper.init();
+    </script>
+  </body>
+</html>
