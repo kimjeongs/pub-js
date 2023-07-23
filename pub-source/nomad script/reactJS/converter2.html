@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script type="text/babel">
+		const MinutesToHour = () => {
+			const[amount, setAmount] = React.useState(); //[현재값,함수]
+			const[inverted, setInverted] = React.useState(false);
+			const onChange = (event) => {
+				setAmount(event.target.value);
+			};
+			const reset = () => setAmount(0);
+			const onFrip = () => {
+				reset();
+				setInverted((current) => !current) //false > true
+			}
+			return (
+				//react 에서는 for, class 사용 못함 htmlFor, className 으로 사용
+				<div>
+					<div>
+						<label htmlFor="minutes"></label>
+						<input 
+							value={inverted ? amount * 60 : amount} //flase
+							id="minutes" 
+							type="number" 
+							placeholder="Minutes" 
+							onChange={onChange}
+							disabled={inverted} //false 
+						/>
+					</div>
+					<div>
+						<label htmlFor="hour"></label>
+						<input 
+							value={inverted ? amount : Math.round(amount / 60)} //false
+							id="hour" 
+							type="number" 
+							placeholder="Hour" 
+							onChange={onChange}
+							disabled={!inverted}// false > true
+						/>
+					</div>
+					<button onClick={reset}>reset</button>
+					<button onClick={onFrip}>{inverted ? "Turn back" : "Inverted"}</button>
+				</div>
+			);
+		}
+		
+		const KmToMiles = () => {
+			const[amount, setAmount] = React.useState();
+			const[inverted,setInverted] = React.useState(false);
+			const onChange = (e) => {
+				setAmount(e.target.value);
+			}
+			const Reset = () => setAmount(0);
+			const onFrip = () => {
+				Reset();
+				setInverted((current) => !current);
+			}
+			return (
+				<div>
+					<div>
+						<input value={inverted ? amount/0.621371 : amount} type="number" placeholder="km" onChange={onChange} disabled={inverted}/>
+					</div>
+					<div>
+						<input value={inverted ? amount : amount*0.621371} type="number" placeholder="miles" onChange={onChange} disabled={!inverted}/>
+					</div>
+					<button onClick={Reset}>reset</button>
+					<button onClick={onFrip}>inverted</button>
+				</div>
+			)
+		}
+		
+		const App = () => {
+			const [index, setIndex] = React.useState("xx");
+			const onSelect = (event) => {
+				setIndex(event.target.value)
+			};
+			return (
+				<div>
+					<h1>Super Converter</h1>
+					<select value={index} onChange={onSelect}>
+						<option value="xx">select your units</option>
+						<option value="0">Minutes & Hour</option>
+						<option value="1">KM & Miles</option>
+					</select>
+					{index === "xx" ? "Please select your units" : null} 
+					{index === "0" ? <MinutesToHour /> : null} 
+					{index === "1" ? <KmToMiles /> : null} 
+				</div>//{index === "0" ? <MinutesToHour /> : null} jsx 문법은 스크립트 쓰려면 중괄호 써야함. 중괄호를 안쓰면 텍스트로 인식함 
+			);
+		}
+		
+		const root = document.getElementById("root");
+		ReactDOM.render(<App />, root)
+	</script>
+</html>

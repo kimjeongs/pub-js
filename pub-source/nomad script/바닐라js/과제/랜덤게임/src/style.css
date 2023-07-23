@@ -1,0 +1,26 @@
+form {
+	display: flex;
+flex-direction: column;
+}
+
+.game-setup__range {
+	margin-bottom: 20px;
+}
+
+.game-setup__range span {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.result {
+	font-weight: bold;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	opacity: 1;
+}
+
+.hidden {
+	visibility: hidden;
+}

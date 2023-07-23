@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script type="text/babel">
+		const App = () => {
+			const[amount, setAmount] = React.useState(); //[현재값,함수]
+			const[inverted, setInverted] = React.useState(false);
+			
+			const onChange = (event) => {
+				setAmount(event.target.value);
+			};
+			const reset = () => setAmount(0);
+			const onFrip = () => {
+				reset();
+				setInverted((current) => !current) //false > true
+			}
+			return (
+				//react 에서는 for, class 사용 못함 htmlFor, className 으로 사용
+				<div>
+					<div>
+						<h1>Super Converter</h1>
+						<label htmlFor="minutes"></label>
+						<input 
+							value={inverted ? amount * 60 : amount} //flase
+							id="minutes" 
+							type="number" 
+							placeholder="Minutes" 
+							onChange={onChange}
+							disabled={inverted} //false 
+						/>
+					</div>
+					<div>
+						<label htmlFor="hour"></label>
+						<input 
+							value={inverted ? amount : Math.round(amount / 60)} //false
+							id="hour" 
+							type="number" 
+							placeholder="Hour" 
+							onChange={onChange}
+							disabled={!inverted}// false > true
+						/>
+					</div>
+					<button onClick={reset}>reset</button>
+					<button onClick={onFrip}>{inverted ? "Turn back" : "Inverted"}</button>
+				</div>
+			);
+		}
+		const root = document.getElementById("root");
+		ReactDOM.render(<App />, root)
+	</script>
+</html>

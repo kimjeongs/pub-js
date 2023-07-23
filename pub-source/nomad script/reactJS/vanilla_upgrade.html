@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		
+		const App = () => {
+			// const data = React.useState(0); 초기값 0으로 설정함
+			//console.log 하면 [undefined,f]를 제공 받음, undefined는 데이터이고 f은 데어터 값을 바꿀 수 있는 함수를 배열로 제공.
+
+			// const counter = data[0];
+			// const setCounter = data[1];
+
+			// ex_ const food = [tomato,potato] 
+			// const a = food[0] 
+			// const b = food[1] 
+			// const[a,b] = food 
+
+			/* const data = React.useState(); */
+			const [counter, setCounter] = React.useState(0); //위처럼 각각 변수명을 사용해서 쓰지 않고 배열에 변수명을 기입해서 사용 가능
+			//일반적으로 counter라는 변수명을 사용하면 함수명은 set + 데이터명으로 지음
+			const countUp = () => {
+				// setCounter(counter + 1); //현재 값을 사용하기엔 불안정
+				setCounter((current) => current +1) ; //함수를 사용면 현재 값을 안전하게 보장 받을 수 있음
+			};
+			/* let counter = 0;
+			const countUp = () => (
+				counter += 1
+			); 와 동일 */
+			return (// 아래코드를 return 다음행에 적었기 때문에 소괄호 필요, 같은 행에 적을시 소괄호 생략가능, App() {} 대괄호가 있으면 반드시 return 작성 
+				<div>
+					<h3>Total count : {counter}</h3>
+					<button onClick={countUp}>Click me</button>
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App />, root)
+	</script>
+</html>
